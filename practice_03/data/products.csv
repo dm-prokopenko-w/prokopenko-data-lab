@@ -1,0 +1,82 @@
+product_id,sku,name,brand,category,price,stock,is_active,attributes
+1,APL-IPD11-128-WIFI,iPad 11 128GB Wi-Fi,Apple,Планшети,15999.50,84,true,
+2,APL-AP4-WHI,AirPods 4,Apple,Навушники,6499.50,85,true,"{""color"": ""white"", ""type"": ""tws"", ""anc"": false, ""battery_h"": 30}"
+3,LEN-TPE14-16-512,ThinkPad E14 16/512GB,Lenovo,Ноутбуки,32999.50,3,true,
+4,APL-IP17P-512,iPhone 17 Pro 512GB,Apple,Смартфони,31919.50,68,true,"{""color"": ""orange"", ""storage_gb"": 512, ""ram_gb"": 8}"
+5,SAM-GS25U-256,Galaxy S25 Ultra 256GB,Samsung,Смартфони,44999.50,25,true,"{""color"": ""black"", ""storage_gb"": 256}"
+6,SAM-GS25U-512,Galaxy S25 Ultra 512GB,Samsung,Смартфони,51299.50,38,true,"{""color"": ""silver"", ""storage_gb"": 512}"
+7,DEL-XPS13-16-512,XPS 13 16/512GB,Dell,Ноутбуки,54999.50,70,true,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 13.4, ""cpu"": ""Core Ultra 7""}"
+8,MSI-MOD14-16-512,Modern 14 16/512GB,MSI,Ноутбуки,22999.50,46,true,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 14.0}"
+9,SAM-GTA9P-128-5G,Galaxy Tab A9+ 128GB 5G,Samsung,Планшети,12939.50,67,true,"{""storage_gb"": 128, ""screen_in"": 11.0, ""connectivity"": ""5g""}"
+10,SAM-GS25-256,Galaxy S25 256GB,Samsung,Смартфони,28499.50,69,true,"{""color"": ""black"", ""storage_gb"": 256}"
+11,HUA-HGT5-46,Watch GT 5 46mm,Huawei,Розумні годинники,9499.50,100,true,"{""color"": ""black"", ""case_mm"": 46, ""gps"": true, ""nfc"": false}"
+12,SON-WF1000XM5-BLU,WF-1000XM5,Sony,Навушники,10999.50,61,false,"{""color"": ""blue"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 30}"
+13,BOS-QCU-BLU,QuietComfort Ultra,Bose,Навушники,18999.50,0,true,"{""color"": ""blue"", ""type"": ""over-ear"", ""anc"": true, ""battery_h"": 8}"
+14,SAM-GS25U-1024,Galaxy S25 Ultra 1TB,Samsung,Смартфони,57599.50,100,true,
+15,LEN-IPS5-16-512,IdeaPad Slim 5 16/512GB,Lenovo,Ноутбуки,28999.50,36,true,
+16,ASU-ZB14-32-1024,Zenbook 14 OLED 32/1024GB,ASUS,Ноутбуки,47199.50,0,false,
+17,ACE-ASP5-16-1024,Aspire 5 16/1024GB,Acer,Ноутбуки,23599.50,0,true,"{""ram_gb"": 16, ""storage_gb"": 1024, ""screen_in"": 15.6, ""cpu"": ""Core i5""}"
+18,BOS-QCU-BLA,QuietComfort Ultra,Bose,Навушники,18999.50,26,true,"{""color"": ""black"", ""type"": ""over-ear"", ""anc"": true, ""battery_h"": 50}"
+19,DEL-XPS13-32-1024,XPS 13 32/1024GB,Dell,Ноутбуки,64899.50,62,true,"{""ram_gb"": 32, ""storage_gb"": 1024, ""screen_in"": 13.4, ""cpu"": ""Core Ultra 7""}"
+20,ASU-VB15-16-512,Vivobook 15 16/512GB,ASUS,Ноутбуки,25959.50,113,true,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 15.6, ""cpu"": ""Core i5""}"
+21,XIA-XWS4-47,Watch S4 47mm,Xiaomi,Розумні годинники,5499.50,26,true,"{""color"": ""black"", ""case_mm"": 47, ""gps"": true, ""nfc"": false}"
+22,APL-IP17-512,iPhone 17 512GB,Apple,Смартфони,21119.50,57,true,"{""color"": ""black"", ""storage_gb"": 512}"
+23,GAR-FR265-46,Forerunner 265 46mm,Garmin,Розумні годинники,17999.50,28,true,"{""color"": ""blue"", ""case_mm"": 46, ""gps"": true, ""nfc"": false}"
+24,SAM-GW8-44,Galaxy Watch 8 44mm,Samsung,Розумні годинники,14499.50,20,true,"{""color"": ""gold"", ""case_mm"": 44, ""gps"": true}"
+25,ONE-OP13-256,OnePlus 13 256GB,OnePlus,Смартфони,29999.50,33,true,"{""color"": ""green"", ""storage_gb"": 256}"
+26,XIA-RN14-128,Redmi Note 14 128GB,Xiaomi,Смартфони,8999.50,13,true,"{""color"": ""purple"", ""storage_gb"": 128}"
+27,APL-IP17-128,iPhone 17 128GB,Apple,Смартфони,16499.50,107,true,"{""color"": ""white"", ""storage_gb"": 128}"
+28,APL-MBP14-24-1024,MacBook Pro 14 M4 24/1024GB,Apple,Ноутбуки,82599.50,52,true,"{""ram_gb"": 24, ""storage_gb"": 1024, ""screen_in"": 14.2, ""cpu"": ""M4""}"
+29,APL-APP3-SIL,AirPods Pro 3,Apple,Навушники,10499.50,93,true,"{""color"": ""silver"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 24}"
+30,APL-AWSE3-44,Watch SE 3 44mm,Apple,Розумні годинники,11999.50,91,true,
+31,MOT-ME60-256,Edge 60 256GB,Motorola,Смартфони,14999.50,66,true,"{""color"": ""blue"", ""storage_gb"": 256, ""ram_gb"": 16}"
+32,HP-PAV15-16-512,Pavilion 15 16/512GB,HP,Ноутбуки,26999.50,113,false,
+33,XIA-X15-256,Xiaomi 15 256GB,Xiaomi,Смартфони,26999.50,0,true,"{""color"": ""black"", ""storage_gb"": 256, ""ram_gb"": 8}"
+34,APL-AWS11-46,Watch Series 11 46mm,Apple,Розумні годинники,19499.50,55,true,"{""color"": ""black"", ""case_mm"": 46, ""gps"": true, ""nfc"": true}"
+35,LEN-LTP12-256-WIFI,Tab P12 256GB Wi-Fi,Lenovo,Планшети,15079.50,52,true,
+36,SAM-GTA9P-64-WIFI,Galaxy Tab A9+ 64GB Wi-Fi,Samsung,Планшети,8999.50,90,true,"{""storage_gb"": 64, ""screen_in"": 11.0, ""connectivity"": ""wifi""}"
+37,APL-AWS11-42,Watch Series 11 42mm,Apple,Розумні годинники,18999.50,24,true,"{""color"": ""blue"", ""case_mm"": 42, ""gps"": true, ""nfc"": false}"
+38,SAM-GS25-128,Galaxy S25 128GB,Samsung,Смартфони,24999.50,103,false,"{""color"": ""black"", ""storage_gb"": 128}"
+39,SON-WF1000XM5-WHI,WF-1000XM5,Sony,Навушники,10999.50,34,true,"{""color"": ""white"", ""type"": ""tws"", ""anc"": true}"
+40,APL-IP17P-1024,iPhone 17 Pro 1TB,Apple,Смартфони,35839.50,71,true,"{""color"": ""black"", ""storage_gb"": 1024, ""ram_gb"": 8}"
+41,APL-MBA13-16-512,MacBook Air 13 M4 16/512GB,Apple,Ноутбуки,53099.50,6,true,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 13.6, ""cpu"": ""M4""}"
+42,APL-IPD11-256-5G,iPad 11 256GB 5G,Apple,Планшети,23619.50,21,true,"{""storage_gb"": 256, ""screen_in"": 11.0, ""connectivity"": ""5g"", ""color"": ""pink""}"
+43,SAM-GB3-BLU,Galaxy Buds3,Samsung,Навушники,6999.50,81,true,"{""color"": ""blue"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 40}"
+44,APL-APP3-WHI,AirPods Pro 3,Apple,Навушники,10499.50,65,true,"{""color"": ""white"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 6}"
+45,GAR-FR265-42,Forerunner 265 42mm,Garmin,Розумні годинники,17499.50,33,true,
+46,APL-IPA11-128-WIFI,iPad Air 11 M3 128GB Wi-Fi,Apple,Планшети,26999.50,0,false,"{""storage_gb"": 128, ""screen_in"": 11.0, ""connectivity"": ""wifi"", ""color"": ""gray""}"
+47,SON-WH1000XM6-WHI,WH-1000XM6,Sony,Навушники,16999.50,58,true,
+48,XIA-RN14-256,Redmi Note 14 256GB,Xiaomi,Смартфони,10259.50,64,true,"{""color"": ""black"", ""storage_gb"": 256, ""ram_gb"": 16}"
+49,JBL-LB3-SIL,Live Buds 3,JBL,Навушники,5499.50,40,true,"{""color"": ""silver"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 8}"
+50,GOO-PX10-128,Pixel 10 128GB,Google,Смартфони,27499.50,107,true,"{""color"": ""obsidian"", ""storage_gb"": 128, ""ram_gb"": 16}"
+51,XIA-XP7-128-WIFI,Pad 7 128GB Wi-Fi,Xiaomi,Планшети,11999.50,45,true,"{""storage_gb"": 128, ""screen_in"": 11.2, ""connectivity"": ""wifi""}"
+52,JBL-T770NC-BLA,Tune 770NC,JBL,Навушники,3999.50,0,true,"{""color"": ""black"", ""type"": ""over-ear"", ""anc"": true, ""battery_h"": 40}"
+53,APL-IP17-256,iPhone 17 256GB,Apple,Смартфони,18809.50,8,true,
+54,APL-AWSE3-40,Watch SE 3 40mm,Apple,Розумні годинники,11499.50,86,true,"{""color"": ""black"", ""case_mm"": 40, ""gps"": true}"
+55,APL-MBA13-16-256,MacBook Air 13 M4 16/256GB,Apple,Ноутбуки,44999.50,6,true,"{""ram_gb"": 16, ""storage_gb"": 256, ""screen_in"": 13.6, ""cpu"": ""M4""}"
+56,ASU-ZB14-16-512,Zenbook 14 OLED 16/512GB,ASUS,Ноутбуки,39999.50,34,true,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 14.0, ""cpu"": ""Core Ultra 7""}"
+57,SAM-GW8-40,Galaxy Watch 8 40mm,Samsung,Розумні годинники,13999.50,42,true,"{""color"": ""blue"", ""case_mm"": 40, ""gps"": true, ""nfc"": false}"
+58,SAM-GA56-256,Galaxy A56 256GB,Samsung,Смартфони,19949.50,46,true,"{""color"": ""black"", ""storage_gb"": 256}"
+59,XIA-X15-512,Xiaomi 15 512GB,Xiaomi,Смартфони,30779.50,36,true,"{""color"": ""green"", ""storage_gb"": 512, ""ram_gb"": 12}"
+60,XIA-XP7-256-WIFI,Pad 7 256GB Wi-Fi,Xiaomi,Планшети,13919.50,1,true,
+61,SAM-GTS10F-256-5G,Galaxy Tab S10 FE 256GB 5G,Samsung,Планшети,25699.50,76,true,
+62,APL-MBP14-16-512,MacBook Pro 14 M4 16/512GB,Apple,Ноутбуки,69999.50,0,false,"{""ram_gb"": 16, ""storage_gb"": 512, ""screen_in"": 14.2, ""cpu"": ""M4""}"
+63,LEN-LTP12-128-WIFI,Tab P12 128GB Wi-Fi,Lenovo,Планшети,12999.50,97,true,"{""storage_gb"": 128, ""screen_in"": 12.7, ""connectivity"": ""wifi""}"
+64,LEN-IPS5-16-1024,IdeaPad Slim 5 16/1024GB,Lenovo,Ноутбуки,34219.50,77,true,"{""ram_gb"": 16, ""storage_gb"": 1024, ""screen_in"": 16.0}"
+65,APL-MBA13-24-512,MacBook Air 13 M4 24/512GB,Apple,Ноутбуки,61199.50,20,true,"{""ram_gb"": 24, ""storage_gb"": 512, ""screen_in"": 13.6}"
+66,HUA-HGT5-41,Watch GT 5 41mm,Huawei,Розумні годинники,8999.50,106,true,"{""color"": ""gold"", ""case_mm"": 41, ""gps"": true, ""nfc"": true}"
+67,APL-IPD11-256-WIFI,iPad 11 256GB Wi-Fi,Apple,Планшети,18559.50,94,true,"{""storage_gb"": 256, ""screen_in"": 11.0, ""connectivity"": ""wifi"", ""color"": ""blue""}"
+68,SAM-GB3-SIL,Galaxy Buds3,Samsung,Навушники,6999.50,97,true,"{""color"": ""silver"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 8}"
+69,XIA-RB6-WHI,Redmi Buds 6,Xiaomi,Навушники,1799.50,106,true,"{""color"": ""white"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 6}"
+70,LEN-TPE14-32-1024,ThinkPad E14 32/1024GB,Lenovo,Ноутбуки,38939.50,89,true,"{""ram_gb"": 32, ""storage_gb"": 1024, ""screen_in"": 14.0, ""cpu"": ""Core i5""}"
+71,APL-IPA11-256-5G,iPad Air 11 M3 256GB 5G,Apple,Планшети,33819.50,0,false,"{""storage_gb"": 256, ""screen_in"": 11.0, ""connectivity"": ""5g""}"
+72,ONE-OP13-512,OnePlus 13 512GB,OnePlus,Смартфони,34199.50,58,true,"{""color"": ""green"", ""storage_gb"": 512}"
+73,SAM-GTS10F-128-WIFI,Galaxy Tab S10 FE 128GB Wi-Fi,Samsung,Планшети,19999.50,88,true,"{""storage_gb"": 128, ""screen_in"": 10.9, ""connectivity"": ""wifi"", ""color"": ""gray""}"
+74,SEN-MOM4-BLU,Momentum 4 Wireless,Sennheiser,Навушники,13999.50,9,true,"{""color"": ""blue"", ""type"": ""over-ear"", ""anc"": true}"
+75,ASU-VB15-8-512,Vivobook 15 8/512GB,ASUS,Ноутбуки,21999.50,85,true,"{""ram_gb"": 8, ""storage_gb"": 512, ""screen_in"": 15.6, ""cpu"": ""Core i5""}"
+76,SAM-GA56-128,Galaxy A56 128GB,Samsung,Смартфони,17499.50,104,true,
+77,ACE-ASP5-8-512,Aspire 5 8/512GB,Acer,Ноутбуки,19999.50,27,true,"{""ram_gb"": 8, ""storage_gb"": 512, ""screen_in"": 15.6, ""cpu"": ""Core i5""}"
+78,XIA-RB6-BLU,Redmi Buds 6,Xiaomi,Навушники,1799.50,109,true,"{""color"": ""blue"", ""type"": ""tws"", ""anc"": true, ""battery_h"": 30}"
+79,APL-IP17P-256,iPhone 17 Pro 256GB,Apple,Смартфони,27999.50,99,true,
+80,ANK-SCS1-BLA,Soundcore Space One,Anker,Навушники,3499.50,77,true,
+81,GOO-PX10-256,Pixel 10 256GB,Google,Смартфони,31349.50,39,true,"{""color"": ""obsidian"", ""storage_gb"": 256}"

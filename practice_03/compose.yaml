@@ -1,0 +1,16 @@
+name: shop-practice
+
+services:
+  ds:
+    image: postgres:18
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: shop
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./data:/data
+
+volumes:
+  pgdata:
