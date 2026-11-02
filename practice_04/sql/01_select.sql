@@ -2,8 +2,8 @@ SET TIME ZONE 'UTC';
 
 -- Завдання 1.1
 SELECT customer_id, first_name, last_name, phone, registered_at
-FROM shop.customers
-WHERE c.country_code = 'PL'
+FROM shop.customers 
+WHERE country_code = 'PL'
   AND registered_at >= '2025-12-01'
   AND registered_at <  '2026-01-01'
   AND email IS NULL

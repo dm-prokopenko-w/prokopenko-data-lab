@@ -27,7 +27,7 @@ FROM shop.orders
 WHERE status = 'received'
     AND country_code = 'UA'
 GROUP BY DATE_TRUNC('month', created_at)
-ORDER BY order_month DESC;
+ORDER BY order_month ASC;
 
 -- Завдання 3.3
 SELECT

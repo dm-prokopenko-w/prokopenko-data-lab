@@ -41,7 +41,7 @@ FROM shop.shipments s
 WHERE s.order_id = 271060
     AND s.received_at IS NOT NULL
 
-ORDER BY event_at DESC;
+ORDER BY event_at ASC;
 
 -- Завдання 5.2
 SELECT
