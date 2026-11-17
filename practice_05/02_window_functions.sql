@@ -52,8 +52,8 @@ SELECT
     pp.product_id,
     pp.valid_from,
     pp.price,
-    FIRST_VALUE(price) OVER (PARTITION BY product_id ORDER BY valid_from) AS first_price,
-    LAST_VALUE(price) OVER (PARTITION BY product_id ORDER BY valid_from ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_price
+    FIRST_VALUE(pp.price) OVER (PARTITION BY pp.product_id ORDER BY pp.valid_from) AS first_price,
+    LAST_VALUE(pp.price) OVER (PARTITION BY pp.product_id ORDER BY pp.valid_from ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_price
 FROM shop.product_prices pp
 JOIN shop.products p ON p.product_id = pp.product_id
 WHERE p.category_id = 9
@@ -62,8 +62,6 @@ WHERE p.category_id = 9
     AND pp.valid_from >= '2025-01-01'
     AND pp.valid_from < '2026-01-01'
 ORDER BY pp.product_id, pp.valid_from;
-
-
 
 -- Завдання 2.5
 
@@ -95,20 +93,19 @@ SELECT
     p.month AS month, 
     p.amount AS amount, 
     LAG(p.amount) OVER (PARTITION BY p.country_code ORDER BY p.month) AS prev_amount, 
-    ROUND(((p.amount - LAG(p.amount) OVER (PARTITION BY p.country_code ORDER BY p.month))) / LAG(p.amount) OVER (PARTITION BY p.country_code ORDER BY p.month) * 100, 1) AS change_pct
+    ROUND((((p.amount - LAG(p.amount) OVER (PARTITION BY p.country_code ORDER BY p.month))) / LAG(p.amount) OVER (PARTITION BY p.country_code ORDER BY p.month)) * 100, 1) AS change_pct
 FROM prev p 
 ORDER BY p.country_code, p.month;
-
 
 -- Завдання 2.7
 
 WITH ranked AS(
     SELECT 
         p.category_id AS category_id, 
-        c.category_name AS category_name, 
+        c.name AS category_name,
         ROW_NUMBER() OVER (PARTITION BY p.category_id ORDER BY SUM(oi.quantity)  DESC, p.product_id) AS place, 
         p.product_id AS product_id, 
-        p.product_name AS product_name,  
+        p.name AS product_name,
         SUM(oi.quantity) AS units_sold
     FROM shop.order_items oi
     JOIN shop.orders o ON o.order_id = oi.order_id
@@ -118,7 +115,7 @@ WITH ranked AS(
         AND o.created_at >= '2025-12-01'
         AND o.created_at < '2026-01-01'
         AND o.status <> 'cancelled'
-    GROUP BY p.category_id, c.category_name, p.product_id, p.product_name)
+    GROUP BY p.category_id, c.name, p.product_id, p.name)
 SELECT 
     r.category_id,
     r.category_name,
@@ -129,3 +126,32 @@ SELECT
 FROM ranked r
 WHERE r.place <= 3
 ORDER BY r.category_id, r.place;
+
+-- Завдання 2.8
+
+WITH res_payments AS (
+    SELECT
+        p.payment_id as payment_id,
+        p.order_id AS order_id,
+        p.amount AS amount,
+        p.installment_no AS installment_no,
+        p.created_at AS created_at,
+        ROW_NUMBER() OVER(PARTITION BY p.order_id ORDER BY p.created_at DESC, p.payment_id DESC) AS rn
+    FROM shop.payments p
+    WHERE p.payment_type = 'payment'
+        AND p.status = 'succeeded'
+)
+SELECT
+    o.order_id,
+    p.payment_id,
+    p.installment_no,
+    p.amount,
+    p.created_at
+FROM shop.orders o
+JOIN res_payments p ON p.order_id = o.order_id
+WHERE o.country_code = 'PL'
+    AND o.payment_method = 'installments'
+    AND o.created_at >= '2025-10-01'
+    AND o.created_at < '2025-11-01'
+    AND p.rn = 1
+ORDER BY o.order_id;

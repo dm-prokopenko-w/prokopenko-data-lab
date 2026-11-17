@@ -1,37 +1,47 @@
 SET TIME ZONE 'UTC';
 
 -- Завдання 1.1
+
 SELECT
     o.order_id,
     o.created_at,
     o.total_amount,
     (SELECT ROUND(AVG(o3.total_amount), 2)
      FROM shop.orders o3
-     WHERE o3.country_code = o.country_code) AS avg_amount
+     WHERE o3.country_code = o.country_code
+        AND o3.created_at >= '2025-12-01'
+        AND o3.created_at <  '2026-01-01'
+    ) AS avg_amount
 FROM shop.orders o
 WHERE o.country_code = 'PL'
   AND o.created_at >= '2025-12-01'
   AND o.created_at <  '2026-01-01'
   AND o.total_amount > (SELECT AVG(o2.total_amount) * 5
                         FROM shop.orders o2
-                        WHERE o2.country_code = 'PL')
-ORDER BY o.total_amount, o.order_id;
-
+                        WHERE o2.country_code = 'PL'
+                        AND o2.created_at >= '2025-12-01'
+                        AND o2.created_at <  '2026-01-01')
+ORDER BY o.total_amount DESC, o.order_id;
 
 -- Завдання 1.2
 
 SELECT 
-	per_customer.country_code AS country_code,
-	COUNT(*) AS customers_cnt,
-	COUNT(*) FILTER (WHERE orders_cnt >=2) repeat_customers_cnt,
-	ROUND(AVG(per_customer.orders_cnt),2) AS avg_orders
-FROM (SELECT customer_id, country_code, COUNT(*) AS orders_cnt
-	FROM shop.orders
-	WHERE created_at >= '2025-01-01' 
-		AND created_at < '2026-01-01'
-	GROUP BY customer_id, country_code) AS per_customer
-GROUP BY country_code
-ORDER BY country_code;
+    per_customer.country_code AS country_code,
+    COUNT(*) AS customers_cnt,
+    COUNT(*) FILTER (WHERE per_customer.orders_cnt >= 2) AS repeat_customers_cnt,
+    ROUND(AVG(per_customer.orders_cnt), 2) AS avg_orders
+FROM (
+    SELECT
+        o.customer_id,
+        o.country_code,
+        COUNT(*) AS orders_cnt
+    FROM shop.orders o
+    WHERE o.created_at >= '2025-01-01'
+        AND o.created_at < '2026-01-01'
+    GROUP BY o.customer_id, o.country_code
+) AS per_customer
+GROUP BY per_customer.country_code
+ORDER BY per_customer.country_code;і
 
 -- Завдання 1.3
 
@@ -106,7 +116,7 @@ WITH daily AS (
     WHERE o.created_at >= '2025-12-01'
       AND o.created_at <  '2026-01-01'
       AND o.country_code = 'PL'
-      AND o.payment_method <> 'cancelled'
+      AND o.status <> 'cancelled'
     GROUP BY o.created_at::date
 ),
 with_avg AS (
@@ -114,12 +124,12 @@ with_avg AS (
         order_date,
         orders_cnt,
         amount,
-        ROUND(AVG(amount) OVER (), 2) AS avg_daily_amount
+        AVG(amount) OVER () AS avg_daily
     FROM daily
 )
-SELECT order_date, orders_cnt, amount, avg_daily_amount
+SELECT order_date, orders_cnt, amount,  ROUND(avg_daily, 2)  AS avg_daily_amount
 FROM with_avg
-WHERE amount > avg_daily_amount
+WHERE amount > avg_daily
 ORDER BY order_date;
 
 -- Завдання 1.7
