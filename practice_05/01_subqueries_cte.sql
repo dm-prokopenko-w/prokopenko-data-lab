@@ -41,7 +41,7 @@ FROM (
     GROUP BY o.customer_id, o.country_code
 ) AS per_customer
 GROUP BY per_customer.country_code
-ORDER BY per_customer.country_code;і
+ORDER BY per_customer.country_code;
 
 -- Завдання 1.3
 
@@ -135,26 +135,27 @@ ORDER BY order_date;
 -- Завдання 1.7
 
 WITH RECURSIVE tree AS (
-	SELECT 
-		c1.category_id, 
-		c1.category_id AS section_id
-	FROM shop.categories c1
-	WHERE c1.parent_id IS NULL
+    SELECT
+        c1.category_id,
+        c1.category_id AS section_id
+    FROM shop.categories c1
+    JOIN shop.categories root ON root.category_id = c1.parent_id
+    WHERE root.parent_id IS NULL
 
-	UNION ALL
+    UNION ALL
 
-	SELECT 
-		c2.category_id, 
-		t.section_id
-	FROM shop.categories c2
-	JOIN tree t ON c2.parent_id = t.category_id
-) 
-SELECT 
-	t.section_id, 
-	c3.name AS section_name, 
-	COUNT(p.category_id) AS products_cnt
+    SELECT
+        c2.category_id,
+        t.section_id
+    FROM shop.categories c2
+    JOIN tree t ON c2.parent_id = t.category_id
+)
+SELECT
+    t.section_id,
+    c3.name AS section_name,
+    COUNT(p.category_id) AS products_cnt
 FROM shop.categories c3
 JOIN tree t ON t.section_id = c3.category_id
 LEFT JOIN shop.products p ON p.category_id = t.category_id
-GROUP BY t.section_id, 	c3.name
-ORDER BY products_cnt DESC, section_id;
+GROUP BY t.section_id, c3.name
+ORDER BY products_cnt DESC, t.section_id;

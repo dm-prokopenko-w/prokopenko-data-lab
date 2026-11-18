@@ -34,17 +34,31 @@ ORDER BY o.country_code, order_date;
 
 -- Завдання 2.3
 
+WITH days AS (
+    SELECT g.d::date AS order_date
+    FROM generate_series('2025-12-01'::date, '2025-12-31'::date, INTERVAL '1 day') AS g(d)
+),
+daily AS (
+    SELECT
+        o.created_at::date AS order_date,
+        SUM(o.total_amount) AS amount
+    FROM shop.orders o
+    WHERE o.country_code = 'PL'
+        AND o.created_at >= '2025-12-01'
+        AND o.created_at < '2026-01-01'
+        AND o.status <> 'cancelled'
+    GROUP BY o.created_at::date
+)
 SELECT
-    o.created_at :: date AS order_date,
-    SUM(o.total_amount) AS amount,
-    ROUND(AVG(SUM(o.total_amount)) OVER (ORDER BY o.created_at :: date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW), 2) AS avg_7d
-FROM shop.orders o
-WHERE o.country_code = 'PL'
-    AND o.created_at >= '2025-12-01'
-    AND o.created_at < '2026-01-01'
-    AND status <> 'cancelled'
-GROUP BY o.created_at::date
-ORDER BY order_date;
+    d.order_date,
+    COALESCE(dl.amount, 0) AS amount,
+    ROUND(AVG(COALESCE(dl.amount, 0)) OVER (
+        ORDER BY d.order_date
+        ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+    ), 2) AS avg_7d
+FROM days d
+LEFT JOIN daily dl ON dl.order_date = d.order_date
+ORDER BY d.order_date;
 
 -- Завдання 2.4
 
