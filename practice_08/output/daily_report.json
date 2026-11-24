@@ -1,0 +1,26 @@
+{
+  "2026-10-12": {
+    "orders_cnt": 354,
+    "total_amount": 8320192.0
+  },
+  "2026-10-13": {
+    "orders_cnt": 340,
+    "total_amount": 7992311.0
+  },
+  "2026-10-14": {
+    "orders_cnt": 443,
+    "total_amount": 9996994.0
+  },
+  "2026-10-15": {
+    "orders_cnt": 444,
+    "total_amount": 10736482.0
+  },
+  "2026-10-16": {
+    "orders_cnt": 376,
+    "total_amount": 7942064.0
+  },
+  "2026-10-17": {
+    "orders_cnt": 373,
+    "total_amount": 8769388.0
+  }
+}
