@@ -2,33 +2,28 @@ from pathlib import Path
 import json
 
 
-def parse_line(files):
-    products_dir = {}
-    for file in files:
-        with file.open(encoding="utf-8") as f:
-            date_name = file.stem.split("_")
-            products_list = []
-            for line in f:
-                products_list.append(json.loads(line))
-            products_dir[date_name[1]] = products_list
-    return products_dir
+def parse_line(line):
+    order = json.loads(line)
+    amount = order.get("total_amount")
+    if amount is None or amount == "":
+        return None
+    order["total_amount"] = float(amount)
+    return order
 
 
-def summarize_file(list_p):
-    summary = {}
-    total = 0
+def summarize_file(path):
     orders_cnt = 0
-    for p in list_p:
-        amount = p.get("total_amount")
-        if amount is None or amount == "":
-            continue
-        # print(p.get("total_amount"))
-        total += float(amount)
-        orders_cnt += 1
-
-    summary["orders_cnt"] = orders_cnt
-    summary["total_amount"] = total
-    return summary
+    total_amount = 0
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            order = parse_line(line)
+            if order is None:
+                continue
+            orders_cnt += 1
+            total_amount += order["total_amount"]
+    return {"orders_cnt": orders_cnt, "total_amount": total_amount}
 
 
 def load_report(path):
@@ -39,32 +34,38 @@ def load_report(path):
         return {}
 
 
-def main() -> None:
-    data_dir = Path("incoming")
-    list_path = sorted(data_dir.glob("*.jsonl"))
+def save_report(report, path):
+    path.parent.mkdir(exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
 
-    if len(list_path) == 0:
+
+def move_to_processed(path, processed_dir):
+    processed_dir.mkdir(exist_ok=True)
+    path.rename(processed_dir / path.name)
+
+
+def main() -> None:
+    incoming_dir = Path("incoming")
+    report_path = Path("output") / "daily_report.json"
+    processed_dir = Path("processed")
+
+    files = sorted(incoming_dir.glob("*.jsonl"))
+    if not files:
         print("Нових файлів немає")
         return
 
-    products = parse_line(list_path)
-    dic_summarize = {}
-    for k, v in products.items():
-        dic_summarize[k] = summarize_file(v)
+    new_days = {}
+    for path in files:
+        date = path.stem.split("_")[1]
+        new_days[date] = summarize_file(path)
 
-    output_dir = Path("output")
-    output_dir.mkdir(exist_ok=True)
-    summary_path = output_dir / "daily_report.json"
-    old_summary = load_report(summary_path)
-    old_summary.update(dic_summarize)
-    with summary_path.open("w", encoding="utf-8") as f:
-        json.dump(old_summary, f, ensure_ascii=False, indent=2)
+    report = load_report(report_path)
+    report.update(new_days)
+    save_report(report, report_path)
 
-    processed_dir = Path("processed")
-    processed_dir.mkdir(exist_ok=True)
-
-    for p in list_path:
-        p.rename(processed_dir / p.name)
+    for path in files:
+        move_to_processed(path, processed_dir)
 
 
 if __name__ == "__main__":
